@@ -15,4 +15,4 @@ COPY --from=build /app/nmu_schedule_bot nmu_schedule_bot
 RUN addgroup -S group && adduser -S user -G group
 USER user
 
-ENTRYPOINT ["/nmu_schedule_bot"]
+ENTRYPOINT ["/app/nmu_schedule_bot"]
