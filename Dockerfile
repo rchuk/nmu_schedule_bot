@@ -12,7 +12,17 @@ WORKDIR /app
 
 COPY --from=build /app/nmu_schedule_bot nmu_schedule_bot
 
-RUN addgroup -S group && adduser -S user -G group
-USER user
+RUN apk add tzdata
+
+ARG UID=10001
+RUN adduser \
+    --disabled-password \
+    --gecos "" \
+    --home "/nonexistent" \
+    --shell "/sbin/nologin" \
+    --no-create-home \
+    --uid "${UID}" \
+    appuser
+USER appuser
 
 ENTRYPOINT ["/app/nmu_schedule_bot"]
