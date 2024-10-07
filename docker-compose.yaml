@@ -1,0 +1,8 @@
+name: nmu_schedule_bot
+
+services:
+  nmu_schedule_bot:
+    build:
+      context: .
+    env_file:
+      - .env
